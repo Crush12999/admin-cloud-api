@@ -11,6 +11,9 @@
     <packaging>pom</packaging>
     <modules>
         <module>common-base</module>
+        <module>common-redis</module>
+        <module>common-mybatis-plus</module>
+        <module>common-web</module>
     </modules>
     <artifactId>admin-common</artifactId>
 

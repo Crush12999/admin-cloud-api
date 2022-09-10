@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.sryzzz.common.web.config.FeignConfig,\
+  com.sryzzz.common.web.exception.GlobalExceptionHandler
