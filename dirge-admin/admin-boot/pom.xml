@@ -3,23 +3,30 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>admin-cloud-api</artifactId>
+        <artifactId>dirge-admin</artifactId>
         <groupId>com.sryzzz</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>dirge-auth</artifactId>
+    <artifactId>admin-boot</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
-
+        <!-- 配置读取 -->
         <dependency>
-            <groupId>com.sryzzz</groupId>
-            <artifactId>common-base</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
         </dependency>
 
-        <!--Spring Cloud & Alibaba -->
+        <!-- 单元测试 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Spring Cloud & Alibaba -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-bootstrap</artifactId>
@@ -42,24 +49,25 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
 
-        <!-- Spring Security 相关依赖 -->
+        <!-- JWT库 -->
         <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-oauth2-jose</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!-- OAuth2 认证服务器-->
-        <dependency>
-            <groupId>org.springframework.security.oauth.boot</groupId>
-            <artifactId>spring-security-oauth2-autoconfigure</artifactId>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>nimbus-jose-jwt</artifactId>
         </dependency>
 
         <dependency>
             <groupId>com.sryzzz</groupId>
             <artifactId>admin-api</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sryzzz</groupId>
+            <artifactId>common-redis</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sryzzz</groupId>
+            <artifactId>common-mybatis-plus</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

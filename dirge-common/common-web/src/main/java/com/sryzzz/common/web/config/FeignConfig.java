@@ -55,12 +55,12 @@ public class FeignConfig {
                     String name = headerNames.nextElement();
                     String values = request.getHeader(name);
                     // 将请求头保存到模板中
-                    template.header(name, values);
+                    if (!"serviceName".equalsIgnoreCase(name)) {
+                        template.header(name, values);
+                    }
                 }
-                System.out.println("当前服务名称：：" + applicationName);
                 template.header("serviceName", applicationName);
             }
-
         };
     }
 }

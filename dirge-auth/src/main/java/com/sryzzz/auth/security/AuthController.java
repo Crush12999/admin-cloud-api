@@ -1,4 +1,4 @@
-package com.sryzzz.auth;
+package com.sryzzz.auth.security;
 
 import com.sryzzz.common.base.result.R;
 import lombok.AllArgsConstructor;

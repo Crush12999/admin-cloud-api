@@ -34,12 +34,11 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 @EnableWebSecurity
 @Slf4j
 @RequiredArgsConstructor
-@Order(2)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService sysUserDetailsService;
 
-    private final String realName = "admin-cloud-realm";
+    private String realName = "";
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

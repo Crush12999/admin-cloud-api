@@ -6,6 +6,7 @@
     <modules>
         <module>dirge-common</module>
         <module>dirge-auth</module>
+        <module>dirge-admin</module>
     </modules>
 
     <parent>
@@ -79,7 +80,7 @@
         <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
         <admin-cloud.version>1.0.0</admin-cloud.version>
         <hutool.version>5.5.8</hutool.version>
-        <mysql.version>8.0.27</mysql.version>
+        <mysql.version>8.0.30</mysql.version>
         <druid.version>1.2.4</druid.version>
         <mybatis-plus.version>3.4.3</mybatis-plus.version>
         <maven.compiler.source>8</maven.compiler.source>

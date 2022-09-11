@@ -1,8 +1,9 @@
 server:
-  port: 20001
+  port: 2004
+
 spring:
   application:
-    name: dirge-auth
+    name: dirge-admin
   cloud:
     nacos:
       # 注册中心
