@@ -7,6 +7,7 @@
         <module>dirge-common</module>
         <module>dirge-auth</module>
         <module>dirge-admin</module>
+        <module>dirge-gateway</module>
     </modules>
 
     <parent>

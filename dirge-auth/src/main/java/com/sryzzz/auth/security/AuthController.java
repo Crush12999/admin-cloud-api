@@ -1,17 +1,18 @@
 package com.sryzzz.auth.security;
 
+import com.nimbusds.jose.jwk.JWKSet;
+import com.nimbusds.jose.jwk.RSAKey;
 import com.sryzzz.common.base.result.R;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.endpoint.TokenEndpoint;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.security.KeyPair;
 import java.security.Principal;
+import java.security.interfaces.RSAPublicKey;
 import java.util.Map;
 
 /**
@@ -28,6 +29,8 @@ import java.util.Map;
 @Slf4j
 public class AuthController {
 
+    private final KeyPair keyPair;
+
     private final TokenEndpoint tokenEndpoint;
 
     @PostMapping("/token")
@@ -37,5 +40,12 @@ public class AuthController {
     ) throws HttpRequestMethodNotSupportedException {
         OAuth2AccessToken accessToken = tokenEndpoint.postAccessToken(principal, parameters).getBody();
         return R.ok(accessToken);
+    }
+
+    @GetMapping("/public-key")
+    public Map<String, Object> getPublicKey() {
+        RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();
+        RSAKey key = new RSAKey.Builder(publicKey).build();
+        return new JWKSet(key).toJSONObject();
     }
 }

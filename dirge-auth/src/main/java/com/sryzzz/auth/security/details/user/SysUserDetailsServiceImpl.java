@@ -38,17 +38,7 @@ public class SysUserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        // 后面从管理端获取用户信息
-        /*SysUserDetails userDetails = loadUser(username);
-        if (!userDetails.isEnabled()) {
-            throw new DisabledException("该账户已被禁用!");
-        } else if (!userDetails.isAccountNonLocked()) {
-            throw new LockedException("该账号已被锁定!");
-        } else if (!userDetails.isAccountNonExpired()) {
-            throw new AccountExpiredException("该账号已过期!");
-        }
-        return userDetails;*/
-        // 后面从管理端获取用户信息
+
         R<UserAuthDTO> result = userFeignClient.getUserByUsername(username);
         SysUserDetails userDetails = null;
         if (R.ok().getCode().equals(result.getCode())) {
@@ -90,7 +80,7 @@ public class SysUserDetailsServiceImpl implements UserDetailsService {
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("admin"));
         authorities.add(new SimpleGrantedAuthority("root"));
-        String s = new BCryptPasswordEncoder().encode("admin");
+        // String s = new BCryptPasswordEncoder().encode("admin");
         return SysUserDetails.builder()
                 .userId(1L)
                 .username(username)

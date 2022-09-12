@@ -7,7 +7,7 @@ package com.sryzzz.common.base.constant;
  * @create 2022/9/10 01:20
  * @description Security 相关常量
  */
-public interface SecurityConstant {
+public interface SecurityConstants {
 
     /**
      * 认证请求头 key
@@ -43,6 +43,11 @@ public interface SecurityConstant {
      * JWT 存储权限前缀
      */
     String AUTHORITY_PREFIX = "ROLE_";
+
+    /**
+     * JWT存储权限属性
+     */
+    String JWT_AUTHORITIES_KEY = "authorities";
 
     String APP_API_PATTERN = "/*/app-api/**";
 

@@ -8,7 +8,7 @@ import com.sryzzz.admin.pojo.entity.SysPermission;
 import com.sryzzz.admin.service.ISysPermissionService;
 import com.sryzzz.common.base.constant.GlobalConstants;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -28,11 +28,11 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, SysPermission> implements ISysPermissionService {
 
-    private final StringRedisTemplate stringRedisTemplate;
+    private final RedisTemplate<String, Object> redisTemplate;
 
     @Override
     public boolean refreshPermRolesRules() {
-        stringRedisTemplate.delete(Collections.singletonList(GlobalConstants.URL_PERM_ROLES_KEY));
+        redisTemplate.delete(Collections.singletonList(GlobalConstants.URL_PERM_ROLES_KEY));
         List<SysPermission> permissions = this.listPermRoles();
         if (CollectionUtil.isNotEmpty(permissions)) {
             List<SysPermission> urlPermList = permissions.stream()
@@ -40,12 +40,12 @@ public class SysPermissionServiceImpl extends ServiceImpl<SysPermissionMapper, S
                     .collect(Collectors.toList());
             if (CollectionUtil.isNotEmpty(urlPermList)) {
                 Map<String, List<String>> urlPermRoles = new HashMap<>();
-                urlPermList.stream().forEach(item -> {
+                urlPermList.forEach(item -> {
                     String perm = item.getUrlPerm();
                     List<String> roles = item.getRoles();
                     urlPermRoles.put(perm, roles);
                 });
-                stringRedisTemplate.opsForHash().putAll(GlobalConstants.URL_PERM_ROLES_KEY, urlPermRoles);
+                redisTemplate.opsForHash().putAll(GlobalConstants.URL_PERM_ROLES_KEY, urlPermRoles);
             }
         }
         return true;

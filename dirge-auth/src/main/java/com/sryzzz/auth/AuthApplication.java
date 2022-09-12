@@ -1,7 +1,5 @@
 package com.sryzzz.auth;
 
-import com.sryzzz.admin.api.OAuthClientFeignClient;
-import com.sryzzz.admin.api.UserFeignClient;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
