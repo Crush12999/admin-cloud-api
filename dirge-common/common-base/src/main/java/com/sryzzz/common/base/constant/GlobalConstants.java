@@ -13,4 +13,14 @@ public interface GlobalConstants {
      * 授权
      */
     String URL_PERM_ROLES_KEY = "system:perm_roles_rule:url:";
+
+    /**
+     * 状态：正常
+     */
+    Integer STATUS_ON = 1;
+
+    /**
+     * 状态：停用
+     */
+    Integer STATUS_OFF = 0;
 }

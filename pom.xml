@@ -22,6 +22,18 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <!-- 版本信息 -->
+    <properties>
+        <spring-boot.version>2.5.6</spring-boot.version>
+        <spring-cloud.version>2020.0.3</spring-cloud.version>
+        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
+        <admin-cloud.version>1.0.0</admin-cloud.version>
+        <hutool.version>5.5.8</hutool.version>
+        <mysql.version>8.0.30</mysql.version>
+        <druid.version>1.2.4</druid.version>
+        <mybatis-plus.version>3.4.3</mybatis-plus.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -73,19 +85,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <!-- 版本信息 -->
-    <properties>
-        <spring-boot.version>2.5.6</spring-boot.version>
-        <spring-cloud.version>2020.0.3</spring-cloud.version>
-        <spring-cloud-alibaba.version>2021.1</spring-cloud-alibaba.version>
-        <admin-cloud.version>1.0.0</admin-cloud.version>
-        <hutool.version>5.5.8</hutool.version>
-        <mysql.version>8.0.30</mysql.version>
-        <druid.version>1.2.4</druid.version>
-        <mybatis-plus.version>3.4.3</mybatis-plus.version>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
 
 </project>
